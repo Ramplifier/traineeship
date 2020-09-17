@@ -20,8 +20,6 @@ class PersonTest {
             System.out.println(p.getAge());
         } catch (PersonDiedException e) {
             System.out.println(e.getMessage());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
         }
         System.out.println(Person.numberOfPossibleGenders);
     }
@@ -35,10 +33,28 @@ class PersonTest {
     }
 
     @Test
-    void birthdayInvalidAge()
-    {
+    void birthdayInvalidAge() {
         Person p = new Person("Stijn", 150);
-        assertThrows(PersonDiedException.class, () -> p.haveBirthday());
+        assertThrows(PersonDiedException.class, p::haveBirthday);
     }
 
+    @Test
+    void testToString() {
+        Person p = new Person("Piet", 23, Gender.MALE);
+        assertEquals("Piet (23) is MALE", p.toString());
+    }
+
+    @Test
+    void testEquals() {
+        Person p = new Person("Piet", 23, Gender.MALE);
+        Person p2 = new Person("Piet", 23, Gender.MALE);
+        assertTrue(p.equals(p2));
+    }
+
+    @Test
+    void testEqualsNot() {
+        Person p = new Person("Piet", 23, Gender.MALE);
+        Person p2 = new Person("Saar", 33, Gender.FEMALE);
+        assertFalse(p.equals(p2));
+    }
 }

@@ -1,4 +1,4 @@
-import homeworkExercises.Hw5;
+import homeworkExercises.Hw8;
 
 public class Main {
 
@@ -7,9 +7,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Hw5 hw5 = new Hw5();
-        int n = 9;
-        hw5.run(4,6);
+        Hw8 hw8 = new Hw8();
+        hw8.runInMain();
 
     }
 }

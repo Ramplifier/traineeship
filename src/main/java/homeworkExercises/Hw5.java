@@ -2,20 +2,23 @@ package homeworkExercises;
 
 public class Hw5 {
 
-    public void run(int n) {
-        for (int i = 0; i < n; i++) {
+    public long run(int n) {
+        for (int i = 1; i <= n; i++) {
             System.out.print(fibo(i) + " ");
         }
+        return fibo(n);
     }
 
-    public void run(int start, int n) {
-        for (int i = 0; i < n; i++) {
-            System.out.print(fibo(i) + " ");
+    public long[] runArr(int n) {
+        long[] fibovalues = new long[n];
+        for (int i = 1; i < n; i++) {
+            fibovalues[i] = fibo(i);
         }
+        return fibovalues;
     }
 
 
-    public int fibo(int n) {
+    public long fibo(int n) {
         if (n == 0) {
             return 0;
         }
