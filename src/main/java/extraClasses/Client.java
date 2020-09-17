@@ -1,4 +1,4 @@
-package les3;
+package extraClasses;
 
 public class Client {
     public String name;
