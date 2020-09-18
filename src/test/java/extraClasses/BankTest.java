@@ -34,17 +34,17 @@ class BankTest {
         Bank testBank = new Bank();
         testBank.addAccount("12341", 0.0f);
         testBank.addAccount("123456789", 0.0f);
-        testBank.getBankAccount("123456781").deposit(234.56f);
-        assertThrows(NullPointerException.class, () -> testBank.transfer("123456781", "123456789", 39.43f));
+        testBank.getBankAccount("12341").deposit(234.56f);
+        assertThrows(IllegalArgumentException.class, () -> testBank.transfer("123456781", "123456789", 39.43f));
     }
 
     @Test
     void transferFailReceiverTest() {
         Bank testBank = new Bank();
         testBank.addAccount("123456781", 0.0f);
-        testBank.addAccount("123456789", 0.0f);
+        testBank.addAccount("1234589", 0.0f);
         testBank.getBankAccount("123456781").deposit(234.56f);
-        assertThrows(NullPointerException.class, () -> testBank.transfer("123456781", "123456789", 39.43f));
+        assertThrows(IllegalArgumentException.class, () -> testBank.transfer("123456781", "123456789", 39.43f));
     }
 
     @Test

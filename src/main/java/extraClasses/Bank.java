@@ -6,26 +6,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bank {
-    private List<BankAccount> accounts = new ArrayList();
+    private List<BankAccount> accounts = new ArrayList<>();
 
     public void addAccount(String _accountNumber, float _interestRate) {
+        BankAccount newAccount;
         if (_interestRate != 0.0f) {
-            BankAccount newAccount = new BankAccount(_accountNumber, _interestRate);
-            accounts.add(newAccount);
+            newAccount = new BankAccount(_accountNumber, _interestRate);
         } else {
-            BankAccount newAccount = new BankAccount(_accountNumber, 0.0f);
-            accounts.add(newAccount);
+            newAccount = new BankAccount(_accountNumber, 0.0f);
         }
+        accounts.add(newAccount);
     }
 
-    public void transfer(String numSender, String numReceiver, float amount) throws InsufficientSaldoException, NullPointerException {
+    public void transfer(String numSender, String numReceiver, float amount) throws InsufficientSaldoException, IllegalArgumentException {
         BankAccount sender = getBankAccount(numSender);
         BankAccount receiver = getBankAccount(numReceiver);
         if (sender == null) {
-            throw new NullPointerException("The bank account of the sender is invalid");
+            throw new IllegalArgumentException("The bank account of the sender is invalid");
         }
-        if (receiver == null)
-            throw new NullPointerException("The bank account of the reciever is invalid");
+        if (receiver == null) {
+            throw new IllegalArgumentException("The bank account of the reciever is invalid");
+        }
         if (sender.getBalance() < amount) {
             throw new InsufficientSaldoException("The sender has insufficient saldo for the transfer");
         } else {
