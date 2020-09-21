@@ -4,6 +4,7 @@ import exceptions.InsufficientSaldoException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class BankAccountTest {
@@ -22,7 +23,7 @@ class BankAccountTest {
         try {
             accTest.withdrawal(425.42f);
         } catch (InsufficientSaldoException ex) {
-            ex.getMessage();
+            System.out.println("hello");
         }
 
         Assertions.assertEquals(416.67f, accTest.getBalance());
@@ -41,5 +42,15 @@ class BankAccountTest {
         BankAccount accTest = new BankAccount("000000000", 0.4f);
         accTest.deposit(500.0f);
         Assertions.assertEquals(200.0f, accTest.calculateInterest());
+    }
+
+
+    @Test
+    void testToString() {
+        Bank ing = new Bank();
+        ing.addAccount("123456789", 0.0f);
+        Person p = new Person("Joppie", 43, Gender.MALE);
+        ing.getBankAccount("123456789").setOwner(p);
+        assertEquals("The account with the number of: 123456789 belongs to Joppie", ing.getBankAccount("123456789").toString());
     }
 }

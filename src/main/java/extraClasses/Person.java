@@ -1,10 +1,11 @@
 package extraClasses;
 
 import exceptions.PersonDiedException;
+import extraClasses.personTypes.Human;
 
 import java.lang.reflect.Method;
 
-public class Person {
+public class Person extends Human {
 
     public static int numberOfPossibleGenders = 3;
     static final int age_max = 130;
@@ -13,10 +14,16 @@ public class Person {
     private int age;
     private Gender gender;
 
+    public Person() {
+        this("nobody");
+    }
+
+    public Person(String _name) {
+        this(_name, 0);
+    }
+
     public Person(String _name, int _age) {
-        setName(_name);
-        setAge(_age);
-        setGender(Gender.UNKNOWN);
+        this(_name, _age, Gender.UNKNOWN);
     }
 
     public Person(String _name, int _age, Gender _gender) {
@@ -24,6 +31,7 @@ public class Person {
         setAge(_age);
         setGender(_gender);
     }
+
 
     public void haveBirthday() throws PersonDiedException {
         setAge(getAge() + 1);
@@ -91,6 +99,11 @@ public class Person {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    @Override
+    public String greet() {
+        return String.format("Hello, my name is %s. Nice to meet you", getName());
     }
 }
 

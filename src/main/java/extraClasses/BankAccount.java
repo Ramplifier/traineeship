@@ -6,16 +6,26 @@ public class BankAccount {
     private String number;
     private float balance;
     private float interestRate;
+    private Person owner;
 
     private BankAccount(String _number) {
-        setNumber(_number);
-        setBalance(0.0f);
-        setInterestRate(0.0f);
+        this(_number, 0.0f);
     }
 
     public BankAccount(String _number, float _interestRate) {
-        this(_number);
+        this(_number, 0.0f, _interestRate);
+    }
+
+    public BankAccount(String _number, float _balance, float _interestRate) {
+
+        this(_number, _balance, _interestRate, new Person("", 0, Gender.UNKNOWN));
+    }
+
+    public BankAccount(String _number, float _balance, float _interestRate, Person _owner) {
+        setNumber(_number);
+        setBalance(_balance);
         setInterestRate(_interestRate);
+        setOwner(_owner);
     }
 
     public void deposit(float amount) {
@@ -29,6 +39,11 @@ public class BankAccount {
             setBalance(getBalance() - amount);
         }
     }
+
+    public String toString() {
+        return String.format("The account with the number of: %s belongs to %s", getNumber(), getOwner().getName());
+    }
+
 
     public float calculateInterest() {
         return getBalance() * getInterestRate();
@@ -58,4 +73,11 @@ public class BankAccount {
         this.interestRate = interest;
     }
 
+    public Person getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Person owner) {
+        this.owner = owner;
+    }
 }
