@@ -1,19 +1,28 @@
 package extraClasses.Microcard;
 
+import exceptions.ArgumentOutOfRange;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.SuperBuilder;
+
+@Data
+@SuperBuilder
+@EqualsAndHashCode(callSuper = false)
 public class GoldCard extends CustomerCard {
+
     public float discount;
 
-    GoldCard(String name, String adres, String city, String customerId, float credit) {
-        super.setName(name);
-        super.setAdres(adres);
-        super.setCity(city);
-        super.setCustomerId(customerId);
-        super.setCredit(credit);
+    @Override
+    public void pay(float amount) {
+        setCredit(getCredit() - (amount - 10));
     }
 
+    public void setDiscount(float discount) throws ArgumentOutOfRange {
+        if (discount < 0 && discount > 31) {
+            throw new ArgumentOutOfRange("This number is not in the range of a valid discount");
+        } else {
+            this.discount = discount;
+        }
 
-    @Override
-    public void Pay(float amount) {
-        setCredit(getCredit() - (amount - 10));
     }
 }

@@ -1,10 +1,12 @@
 package extraClasses.Microcard;
 
 
+import exceptions.ArgumentOutOfRange;
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
 @Data
-
+@SuperBuilder
 public abstract class CustomerCard {
     private String name;
     private String adres;
@@ -16,8 +18,7 @@ public abstract class CustomerCard {
         credit += amount;
     }
 
-    public abstract void Pay(float amount);
-
+    public abstract void pay(float amount) throws ArgumentOutOfRange;
 }
 
 

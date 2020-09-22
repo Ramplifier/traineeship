@@ -1,4 +1,4 @@
-import homeworkExercises.Hw9;
+import labExercises.Lab10;
 
 public class Main {
 
@@ -7,8 +7,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Hw9 hw9 = new Hw9();
-        hw9.runInMain();
+        Lab10 l10 = new Lab10();
+        l10.runInMain();
 
     }
 }
