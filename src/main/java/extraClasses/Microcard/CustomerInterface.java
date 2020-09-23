@@ -16,7 +16,14 @@ public class CustomerInterface {
     }
 
     public void addGoldCard(String _name, String _adress, String _city, String _customerID, float _credit, float _discount) {
-        GoldCard gc = GoldCard.builder().name(_name).adres(_adress).city(_city).customerId(_customerID).credit(_credit).discount(-_discount).build();
+        GoldCard gc = (GoldCard) GoldCard.builder().name(_name).adres(_adress).city(_city).customerId(_customerID).credit(_credit).build();
+        try {
+            gc.setDiscount(-50.0f);
+            System.out.println(gc.getDiscount());
+        } catch (ArgumentOutOfRange ex) {
+            ex.getMessage();
+        }
+
         cards.add(gc);
     }
 

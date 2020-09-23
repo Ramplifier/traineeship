@@ -1,9 +1,10 @@
 package labExercises;
 
+import exceptions.ArgumentOutOfRange;
 import extraClasses.Microcard.CustomerInterface;
 
 public class Lab10 {
-    public void runInMain() {
+    public void runInMain() throws ArgumentOutOfRange {
         CustomerInterface cusI = new CustomerInterface();
         cusI.addRegularCard("Piet", "Bakkerweg 23", "Boekbergen", "32342", 420.0f);
         cusI.addRegularCard("Geer", "Bakkerweg 23", "Boekbergen", "32343", 410.0f);

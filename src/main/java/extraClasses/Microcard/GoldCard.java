@@ -10,15 +10,19 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = false)
 public class GoldCard extends CustomerCard {
 
-    public float discount;
+    private float discount;
 
     @Override
     public void pay(float amount) {
-        setCredit(getCredit() - (amount - 10));
+        setCredit(getCredit() - (amount - discount));
     }
 
     public void setDiscount(float discount) throws ArgumentOutOfRange {
-        if (discount < 0 && discount > 31) {
+
+        if (discount < 0) {
+            throw new ArgumentOutOfRange("This number is not in the range of a valid discount");
+        }
+        if (discount > 30) {
             throw new ArgumentOutOfRange("This number is not in the range of a valid discount");
         } else {
             this.discount = discount;
