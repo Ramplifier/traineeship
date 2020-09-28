@@ -8,7 +8,7 @@ class Hw6Test {
 
     @Test
     void doubleArrayLengthTest() {
-        Hw6 testHw6 = new Hw6();
+        //Hw6 testHw6 = new Hw6();
         long[] arr = {1, 2, 3, 5};
         long[] arrdouble = {1, 2, 3, 5, 0, 0, 0, 0};
 
