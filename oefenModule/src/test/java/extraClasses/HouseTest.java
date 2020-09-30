@@ -1,0 +1,6 @@
+package extraClasses;
+
+class HouseTest {
+
+
+}
